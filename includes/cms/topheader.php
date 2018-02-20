@@ -114,7 +114,7 @@
               <a href="?logout">Or sign in as a different user</a>
             </div>
             <div class="lockscreen-footer text-center">
-              <?php include "footer2.php"; ?>
+              <?php include "../footer2.php"; ?>
             </div>
           </div>
           <div class="row" style="margin: 15px;" id="view2">

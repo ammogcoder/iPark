@@ -1,1 +1,1 @@
-C:\xampp\php\php.exe C:\xampp\htdocs\ssFiles\includes\cron.php
+C:\xampp\php\php.exe C:\xampp\htdocs\includes\cron.php

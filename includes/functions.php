@@ -100,7 +100,7 @@ class Stratek{
         $status = $this->sanitize($status);
 
         echo "<script>
-					alertify.alert('Gold Coast Restaurant','" . $message . "');
+					alertify.alert('Stratek Solutions','" . $message . "');
 				</script>";
 
     }
@@ -333,11 +333,12 @@ class Stratek{
         return $result->rowCount();
     }
 
-    function loadUserLogins()
+    function loadUserLogins($pid)
     {
+        $pid = $this->sanitize($pid);
         $sql = "select * from lastlogin where pid=? order by date desc";
         $result = $this->con->prepare($sql);
-        $result->execute(array($_SESSION['stratekadmin']));
+        $result->execute(array($pid));
 
         $data = "<table class='table table-bordered table-condensed table-striped table-hover' id='tableList'>";
         $data .= "<thead><tr><th><center>No.</center></th><th><center>Date</center></th><th><center>Remote IP/Location</center></th></tr></thead><tbody>";
@@ -554,9 +555,9 @@ class Stratek{
         }
     }
 
-    function changeProfilePicAdmin()
+    function changeProfilePicAdmin($pid)
     {
-        $pid = $this->sanitize($_SESSION['stratekadmin']);
+        $pid = $this->sanitize($pid);
         $base64 = $this->sanitize($_POST['picture']);
         //checking if user already has a dp
         $sql = "select * from dp where pid=?";
@@ -1459,49 +1460,17 @@ class Stratek{
         if (isset($_GET['logout'])) {
             $this->updateActiveLogin($_SESSION['stratekuser'], 0);
             unset($_SESSION['stratekuser']);
-            unset($_SESSION['useredit']);
-            unset($_SESSION['existingOrders']);
             $this->redirect("login.php");
-        } elseif (isset($_GET['dashboard'])) {
-            $this->redirect("home.php");
-        } elseif (isset($_GET['newOrder'])) {
-            $this->setClassActive('newOrder');
-            $this->setHeaderTitle("New Order");
-            if (isset($_GET['proceed'])) {
-                include "user/newOrderProceed.php";
-            } else {
-                include "user/newOrder.php";
-            }
-        } elseif (isset($_GET['existingOrder'])) {
-            $this->setClassActive('existingOrder');
-            $this->setHeaderTitle("Existing Order");
-            include "user/existingOrder.php";
-        } elseif (isset($_GET['processBill'])) {
-            $this->setClassActive('processBill');
-            $this->setHeaderTitle("Process Bill");
-            include "user/processBill.php";
-        } elseif (isset($_GET['splitBill'])) {
-            $this->setClassActive('splitBill');
-            $this->setHeaderTitle("Split Bill");
-            include "user/splitBill.php";
-        } elseif (isset($_GET['mergeBill'])) {
-            $this->setClassActive('mergeBill');
-            $this->setHeaderTitle("Merge Bill");
-            include "user/mergeBill.php";
-        } elseif (isset($_GET['password'])) {
-            $this->setHeaderTitle("Change Password");
+        }elseif(isset($_GET['dashboard'])){
+            include "user/dashboard.php";
+        }elseif(isset($_GET['logins'])){
+            include "user/userLogins.php";
+        }elseif (isset($_GET['profile'])) {
+            include "user/profile.php";
+        }elseif (isset($_GET['passwd'])) {
             include "user/password.php";
-        } elseif(isset($_GET['processedBill'])){
-            if(isset($_GET['edit'])){
-                $this->setHeaderTitle("Processed Transactions/Bill | ".$_SESSION['processedBillTid']);
-                $this->setHeaderUrl("?processedBill");
-                include "user/processedBillEdit.php";
-            }else{
-                $this->setHeaderTitle("Processed Transactions/Bills");
-                include "user/processedBill.php";
-            }
         }else {
-            $this->redirect("home.php");
+            include "user/dashboard.php";   
         }
     }
 
@@ -1526,10 +1495,10 @@ class Stratek{
             $_SESSION['lock'] = 0;
             $this->updateLastLogin($details[0]);
             $this->updateActiveLogin($_SESSION['stratekuser'], 1);
-            //$this->displayMsg2("LogIn successful...", 1);
+            $this->displayMsg("LogIn successful...", 1);
             $this->redirect("index.php");
         } else {
-            $this->displayMsg2("LogIn failed...", 0);
+            $this->displayMsg("LogIn failed...", 0);
             //$this->redirect("login.php");
         }
     }
@@ -2836,7 +2805,7 @@ class Stratek{
 			                </div>
 			                <div class='col s4'>
 			                  <div class='input-field center-align'>
-			                    <button type='button' class='waves-effect waves-light btn red' onclick=\"deleteExistingOrder('Gold Coast Restaurant','Delete Order(s)?')\">
+			                    <button type='button' class='waves-effect waves-light btn red' onclick=\"deleteExistingOrder('Stratek Solutions','Delete Order(s)?')\">
 			                      <i class='material-icons left'>delete</i>Delete
 			                    </button>
 			                  </div>
@@ -3183,10 +3152,10 @@ class Stratek{
 							//console.log('working');
 							var mode_of_payment = $('#mode_of_payment').val();
 							if(mode_of_payment == 0){
-								alertify.alert('Gold Coast Restaurant','Please select a mode of payment!!!');
+								alertify.alert('Stratek Solutions','Please select a mode of payment!!!');
 								return;
 							}
-							alertify.confirm('Gold Coast Restaurant','Process bill?',function(e){
+							alertify.confirm('Stratek Solutions','Process bill?',function(e){
 								if(e){
 									var tid = '" . $_SESSION['existingOrders'][0] . "';
 									var discount = $('#discount').val();
@@ -3643,7 +3612,7 @@ class Stratek{
                 //function for move item
                 $data .= "<script>
 									function moveItem" . $row['id'] . "(){
-										alertify.confirm('Gold Coast Restaurant','Move Item?',function(e){
+										alertify.confirm('Stratek Solutions','Move Item?',function(e){
 											if(e){
 												//sending data to api
 												$.post('ajax.php',{'moveSplitItem':'y','tid':'" . $tid . "','ptid':'" . $ptid . "','order_id':'" . $row['id'] . "','quantity':'" . $row['quantity'] . "','pid':'" . $_SESSION['stratekuser'] . "'},function(data){
@@ -3674,7 +3643,7 @@ class Stratek{
                 $data .= "<script>
 									function moveItem2" . $row['id'] . "(){
 										var quantity = $('#quantity" . $row['id'] . "').val();
-										alertify.confirm('Gold Coast Restaurant','Move Item?',function(e){
+										alertify.confirm('Stratek Solutions','Move Item?',function(e){
 											if(e){
 												//sending data to api
 												$.post('ajax.php',{'moveSplitItem':'y','tid':'" . $tid . "','ptid':'" . $ptid . "','order_id':'" . $row['id'] . "','quantity':quantity,'pid':'" . $_SESSION['stratekuser'] . "'},function(data){
@@ -3730,7 +3699,7 @@ class Stratek{
 
 							//saving the entire process
 							function saveProcess(){
-								alertify.confirm('Gold Coast Restaurant','Save?',function(e){
+								alertify.confirm('Stratek Solutions','Save?',function(e){
 									if(e){
 										$.post('ajax.php',{'saveSplitBillProcess':'y','tid':'" . $tid . "','ptid':'" . $ptid . "'},function(data){
 											if(data==1){
@@ -3944,7 +3913,7 @@ class Stratek{
 								});
 							}
 						function saveBtn(){
-							alertify.confirm('Gold Coast Restaurant','Save?',function(e){
+							alertify.confirm('Stratek Solutions','Save?',function(e){
 								if(e){
 									$.post('ajax.php',{'saveMergeBill':'y'},function(data){
 										if(data == 1){
@@ -4029,7 +3998,7 @@ class Stratek{
             //move js function
             $data .= "<script>
 				   					function moveItem" . $row['id'] . "(){
-				   						alertify.confirm('Gold Coast Restaurant','Move Item?',function(e){
+				   						alertify.confirm('Stratek Solutions','Move Item?',function(e){
 				   							if(e){
 				   								//submitting data to server
 				   								$.post('ajax.php',{'mergeBill':'y','tid':'" . $tid . "','ptid':'" . $ptid . "','order_id':'" . $row['id'] . "','quantity':'" . $row['quantity'] . "','pid':'" . $_SESSION['stratekuser'] . "'},function(data){
@@ -4104,7 +4073,7 @@ class Stratek{
         $data .= "<script>
 				   				$('#tidTotal').html('" . $this->formatNumber($totalAmount) . "');
 				   				function moveAllData(tid,ptid){
-				   					alertify.confirm('Gold Coast Restaurant','Move All?',function(e){
+				   					alertify.confirm('Stratek Solutions','Move All?',function(e){
 				   						if(e){
 				   							//sending data to server
 				   							$.post('ajax.php',{'mergeMoveAll':'y','tid':tid,'ptid':ptid},function(data){
@@ -4184,7 +4153,7 @@ class Stratek{
             //move js function
             $data .= "<script>
 				   					function moveItemS" . $row['id'] . "(){
-				   						alertify.confirm('Gold Coast Restaurant','Move Item?',function(e){
+				   						alertify.confirm('Stratek Solutions','Move Item?',function(e){
 				   							if(e){
 				   								//submitting data to server
 				   								$.post('ajax.php',{'mergeBill':'y','tid':'" . $ptid . "','ptid':'" . $tid . "','order_id':'" . $row['id'] . "','quantity':'" . $row['quantity'] . "','pid':'" . $_SESSION['stratekuser'] . "'},function(data){
@@ -4403,7 +4372,7 @@ class Stratek{
 						</div>";
         $data .= "<script>
 				   					function moveItem" . $tid . $id . "(){
-				   						alertify.confirm('Gold Coast Restaurant','Move Item(s)?',function(e){
+				   						alertify.confirm('Stratek Solutions','Move Item(s)?',function(e){
 				   							if(e){
 				   								//submitting data to server
 				   								$.post('ajax.php',{'mergeSelectedBill':'" . $category . "','tid':'" . $tid . "','ptid':'" . $ptid . "'},function(data){
@@ -5329,13 +5298,13 @@ class Stratek{
 
 
                 function deleteProcessedBill(tid){
-                    alertify.confirm('Gold Coast Restaurant','Delete?', function(e){
+                    alertify.confirm('Stratek Solutions','Delete?', function(e){
                         $.post('ajax.php',{'deleteProcessedBill': tid}, function(data){
                             if(data == 1){
-                                alertify.alert('Gold Coast Restaurant', 'Process Completed');
+                                alertify.alert('Stratek Solutions', 'Process Completed');
                                 window.location.assign('?processedBill');
                             }else{
-                                alert.alert('Gold Coast Restaurant', 'Process failed.. Try again');
+                                alert.alert('Stratek Solutions', 'Process failed.. Try again');
                             }
                         });
                     }, function(c){
@@ -5444,10 +5413,10 @@ class Stratek{
                             //console.log('working');
                             var mode_of_payment = $('#mode_of_payment').val();
                             if(mode_of_payment == 0){
-                                alertify.alert('Gold Coast Restaurant','Please select a mode of payment!!!');
+                                alertify.alert('Stratek Solutions','Please select a mode of payment!!!');
                                 return;
                             }
-                            alertify.confirm('Gold Coast Restaurant','Save?',function(e){
+                            alertify.confirm('Stratek Solutions','Save?',function(e){
                                 if(e){
                                     var tid = '" . $_SESSION['processedBillTid'] . "';
                                     var discount = $('#discount').val();
@@ -5693,7 +5662,7 @@ class Stratek{
                 //js code
                 $data.="<script>
                             function restore".$row['id']."(){
-                                alertify.confirm('Gold Coast Restaurant', 'Restore?', function(y){
+                                alertify.confirm('Stratek Solutions', 'Restore?', function(y){
                                     $('#dbRestore".$row['id']."').submit();
                                     progress();
                                 }, function(c){});

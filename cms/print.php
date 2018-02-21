@@ -1,3 +1,3 @@
 <?php 
-	include "../ssFiles/includes/print.php";
+	include "../includes/print.php";
 ?>

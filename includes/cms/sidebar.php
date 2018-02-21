@@ -52,9 +52,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="?existingOrdersReport"><i class="fa fa-circle-o text-red"></i> Existing Orders</a></li>
+            <!-- <li><a href="?existingOrdersReport"><i class="fa fa-circle-o text-red"></i> Existing Orders</a></li>
               <li><a href="?receiptReport"><i class="fa fa-circle-o text-green"></i> Processed Bill Receipt</a></li>
-              <li><a href="?summaryReport"><i class="fa fa-circle-o text-blue"></i> Summary Report</a></li>
+              <li><a href="?summaryReport"><i class="fa fa-circle-o text-blue"></i> Summary Report</a></li> -->
           </ul>
         </li>
         <li class="treeview">
@@ -66,9 +66,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="?billingParams"><i class="fa fa-circle-o text-red"></i> Billing Params</a></li>
+            <!-- <li><a href="?billingParams"><i class="fa fa-circle-o text-red"></i> Billing Params</a></li>
             <li><a href="?menu"><i class="fa fa-circle-o text-green"></i> Menu</a></li>
-            <li><a href="?tax"><i class="fa fa-circle-o text-blue"></i> Tax/Service Charge</a></li>
+            <li><a href="?tax"><i class="fa fa-circle-o text-blue"></i> Tax/Service Charge</a></li> -->
             <li><a href="?printer"><i class="fa fa-circle-o text-yellow"></i> Printer Configuration</a></li>
           </ul>
         </li>
@@ -81,7 +81,7 @@
         </li>
         <li class="header">SYSTEM USERS</li>
           <li><a href="?systemUsers"><i class="fa fa-users"></i> <span>System Admins</span></a></li>
-          <li><a href="?users"><i class="fa fa-users"></i> <span>Waiters/Waitresses</span></a></li>
+          <li><a href="?users"><i class="fa fa-users"></i> <span>Users</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

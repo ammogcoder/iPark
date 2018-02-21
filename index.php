@@ -44,25 +44,25 @@
 <div class="wrapper">
 
   <?php
-    include "../includes/topheader.php";
+    include "includes/user/topheader.php";
   ?>
 
   <!-- Left side column. contains the logo and sidebar -->
   <?php
-    include "../includes/sidebar.php";
+    include "includes/user/sidebar.php";
   ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="row" style="margin-top: 0px; padding-top: 15px; margin-left: 15px; margin-right: 15px;">
-      <?php $stratek->loadContentAdmin(); ?>
+      <?php $stratek->loadContentUser(); ?>
     </div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <?php
-      include "../includes/footer.php";
+      include "includes/footer.php";
     ?>
   </footer>
 

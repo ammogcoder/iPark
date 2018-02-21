@@ -1,0 +1,1 @@
+    <strong>Copyright &copy; <?php if(date("Y")=="2018"){ echo "2018"; }else{ echo "2018-".date("Y"); } ?> <a href="https://www.sperixlabs.org" target="_blank">www.sperixlabs.org</a>.</strong>

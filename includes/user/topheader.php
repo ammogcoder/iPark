@@ -1,6 +1,6 @@
 <?php
-  $userDetails = $stratek->getFullDetailsId($_SESSION['stratekadmin'],"login");
-  $dp = $stratek->getFullDetailsPid($_SESSION['stratekadmin'],"dp");
+  $userDetails = $stratek->getFullDetailsId($_SESSION['stratekuser'],"login");
+  $dp = $stratek->getFullDetailsPid($_SESSION['stratekuser'],"dp");
 ?>
   <header class="main-header">
     <!-- Logo -->

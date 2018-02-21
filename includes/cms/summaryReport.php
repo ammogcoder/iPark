@@ -34,15 +34,15 @@
 
 <script>
     function printDocument(pdf){
-        alertify.confirm('Gold Coast Restaurant','Print?',function(e){
+        alertify.confirm('Stratek Solutions','Print?',function(e){
             if(e){
                 // yes
                 $.post('ajax.php',{'printDocument':pdf},function(data){
                     if(data == 1){
-                        alertify.alert('Gold Coast Restaurant','File added to print queue..');
+                        alertify.alert('Stratek Solutions','File added to print queue..');
                     }else{
-                       alertify.alert('Gold Coast Restaurant','Process failed..');
-                        //alertify.alert('Gold Coast Restaurant',data);
+                       alertify.alert('Stratek Solutions','Process failed..');
+                        //alertify.alert('Stratek Solutions',data);
                     }
                 });
             }

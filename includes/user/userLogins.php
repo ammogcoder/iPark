@@ -6,5 +6,5 @@
 <hr>
 
 <div class="row" style="margin: 15px;">
-	<?php $this->loadUserLogins($_SESSION['stratekadmin']); ?>
+	<?php $this->loadUserLogins($_SESSION['stratekuser']); ?>
 </div>

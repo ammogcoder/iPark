@@ -45,7 +45,7 @@
 	    
 	    <i class="fa fa-info-circle"></i> <strong><span style='color: #fff;'>How to use </span></strong> <a href="#" class="alert-link" style="font-family: flower;">  the Cron Background Task Configuration</a><br/><br>
 
-	    <p> Check the ``dbconfig.php`` file in ``ssFiles/includes/`` default root directory to make sure all defined path for the cron job is correct for your operating system.</p>
+	    <p> Check the ``dbconfig.php`` file in ``includes/`` default root directory to make sure all defined path for the cron job is correct for your operating system.</p>
 	    <p>
 	    	<h3> Linux Configuration</h3>
 	    	<ol>

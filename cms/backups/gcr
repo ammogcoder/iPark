@@ -1,1 +1,1 @@
-0 */12 * * * root /usr/bin/php /var/www/gcr/ssFiles/includes/cron.php
+0 */12 * * * root /usr/bin/php /var/www/stratek/includes/cron.php

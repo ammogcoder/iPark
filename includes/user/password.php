@@ -29,7 +29,7 @@
 </div>
 <?php 
 	if(isset($_POST['pwdBtn'])){
-		$this->updateAdminPassword($_SESSION['stratekadmin'],$_POST['oldpassword'],$_POST['newpassword']);
+		$this->updateAdminPassword($_SESSION['stratekuser'],$_POST['oldpassword'],$_POST['newpassword']);
 	}
 ?>
 

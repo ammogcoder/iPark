@@ -92,7 +92,7 @@
   </div>
 <?php
   if(isset($_POST['loginBtn']) || (isset($_POST['username']) && isset($_POST['password']))){
-    $stratek->verifyAdmin($_POST['username'],$_POST['password']);
+    $stratek->verifyUser($_POST['username'],$_POST['password']);
   }
 ?>
 <script type="text/javascript">

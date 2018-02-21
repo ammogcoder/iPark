@@ -17,14 +17,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $this->getNumberUsers(1); ?></h3>
+              <h3><?php  ?></h3>
 
-              <p>Users</p>
+              <p><!-- topic --></p>
             </div>
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="?users" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -32,14 +32,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><?php echo $this->getActiveLogin();  ?></h3>
+              <h3><?php   ?></h3>
 
-              <p>Active Users</p>
+              <p><!-- add topic --></p>
             </div>
             <div class="icon">
               <i class="ion ion-flash"></i>
             </div>
-            <a href="?activeUsers" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -47,14 +47,14 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3><?php echo $this->getNumberUsers(0); ?></h3>
+              <h3><?php  ?></h3>
 
-              <p>Management System Users</p>
+              <p><!-- topic --></p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="?systemUsers" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -62,7 +62,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo $this->getNumberOfLogins($_SESSION['stratekadmin']); ?></h3>
+              <h3><?php echo $this->getNumberOfLogins($_SESSION['stratekuser']); ?></h3>
 
               <p>Number of Logins</p>
             </div>
@@ -111,7 +111,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="glyphicon glyphicon-globe"></i></span>
-             <?php $lastLogin = $this->getLastLogin($_SESSION['stratekadmin']); ?>
+             <?php $lastLogin = $this->getLastLogin($_SESSION['stratekuser']); ?>
             <div class="info-box-content">
               <span class="info-box-text">Last Login IP</span>
               <span class="info-box-number"><?php echo $lastLogin[1]; ?></span>
@@ -142,7 +142,7 @@
               <div class="modal-body">
                   <h2 style='color: #3c8dbc; font-family: flower' class="form-signin-heading"><center>Parking Lot Management System</center></h2>
                   <h3 style='color: grey; text-decoration: none; font-family: helvetica' class="form-signin-heading"><center></center></h3>
-                  <center><img src="images/logo.png" style="width: auto; height: 70px; margin: 5px;" /></center>
+                  <center><img src="cms/images/logo.png" style="width: auto; height: 70px; margin: 5px;" /></center>
               </div>
             </div>
           </div>
@@ -152,11 +152,11 @@
 
     <?php 
       if(isset($_POST['uploadImg'])){
-        $this->changeProfilePicAdmin($_SESSION['stratekadmin']);
+        
       }
     ?>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="js/pages/dashboard.js"></script>
+  <script src="cms/js/pages/dashboard.js"></script>
   <script>
     $.widget.bridge('uibutton', $.ui.button);
   </script>

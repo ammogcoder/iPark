@@ -1,5 +1,5 @@
 <?php 
-	$details=$this->getFullDetailsId($_SESSION['stratekadmin'],"login");
+	$details=$this->getFullDetailsId($_SESSION['stratekuser'],"login");
 ?>
 <div class="row" id="displayRes"></div>
 <div class="row" style="margin: 0px;">
@@ -32,7 +32,7 @@
 </div>
 <?php 
 	if(isset($_POST['updateBtn'])){
-		$this->updateAdminProfile2($_SESSION['stratekadmin'],$_POST['username'],$_POST['fullname'],$_POST['mobileNo']);
+		$this->updateAdminProfile2($_SESSION['stratekuser'],$_POST['username'],$_POST['fullname'],$_POST['mobileNo']);
 	}
 ?>
 <script type="text/javascript">

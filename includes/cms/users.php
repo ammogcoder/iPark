@@ -1,5 +1,5 @@
 <div class="row" style="margin: 15px;">
-	<div style="text-align: center;"><legend><span class="glyphicon glyphicon-user"></span> Waiters/Waitresses</legend></div>
+	<div style="text-align: center;"><legend><span class="glyphicon glyphicon-user"></span> Users</legend></div>
 </div>
 <div class="row" style="margin: 5px;">
 	<div class="col-md-3">
